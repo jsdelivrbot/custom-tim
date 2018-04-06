@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+{% block body_id 'default_index' %}
+
+{% block header %}
+    <nav class="navbar">
+
+    <div class="navbar-header">
+        <img class="logo" src="{{ asset('/images/logo.png') }}"/>
+    </div>
+
+    <div class="title">
+        <ul class="nav navbar-nav">
+            <li class="title"><a href="#">T.I.M. Tag Incident Manager</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <div class="dropdown-toggle"><button class="btn btn-success"> Déconnexion</button>
+            </div>
+        </ul>
+    </div>
+
+    </nav>{% endblock %}
+{% block footer %}Copyright ...{% endblock %}
+
+{% block body %}
+<br/>
+    <div class="row">
+        <div class="col-sm-5 adding-rule-section" id="left-col">
+            <div class="row" id="left-col-top">
+                <div class="col-title">
+                    <h4>AJOUTER UNE REGLE DE DESACTIVATION</h4>
+                </div>
+                <br/>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Tag</h4>
+                    </div>
+                    <div class="card">
+                        <select class="form-control" id="sel1">
+                            <option>Eulerian</option>
+                            <option>Omniture</option>
+                            <option>Dart</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row" id="left-col-bottom">
+                <div class="card">
+                    <label for="">
+                        <h4>Zones</h4>
+                    </label>
+                    <select multiple class="form-control">
+                        <option>Déscente Train</option>
+                        <option>Page confirmation</option>
+                        <option>zone 2</option>
+                        <option>zone 3</option>
+                        <option>zone 4</option>
+                    </select>
+                </div>
+                <div>
+                    <br/>
+                    <button type="button" class="btn btn-default">Ajouter</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 adding-rule-section" id="right-col">
+
+            <div class="col-title">
+                <h4>REGLES EN COURS</h4>
+            </div>
+            <div class="card rules">
+                <table>
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/green.jpg') }}"/></td>
+                        <td><h5>Omniture</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">Activée</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                        </td>
+                    </tr>
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/green.jpg') }}"/></td>
+                        <td><h5>Tag 1</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">Activée</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                        </td>
+                    </tr>
+
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/red.jpg') }}"/></td>
+                        <td><h5>Eulerian</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">En attente de suppréssion</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                            <button class="btn btn-zone">Zone7</button>
+                        </td>
+                    </tr>
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/red.jpg') }}"/></td>
+                        <td><h5>Tag 2</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">En attente de suppréssion</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                        </td>
+                    </tr>
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/gray.jpg') }}"/></td>
+                        <td><h5>Dart</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">En attente d'activation</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                            <button class="btn btn-zone">Zone7</button>
+                            <button class="btn btn-zone">Zone8</button>
+                        </td>
+                    </tr>
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/gray.jpg') }}"/></td>
+                        <td><h5>Dart</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">En attente d'activation</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                            <button class="btn btn-zone">Zone7</button>
+                            <button class="btn btn-zone">Zone8</button>
+                        </td>
+                    </tr>
+
+                    <tr class="rule-row-top">
+                        <td><img class="mr-3" src="{{ asset('/images/gray.jpg') }}"/></td>
+                        <td><h5>Dart</h5></td>
+                        <td><button type="button" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="right" title="Supprimer cette règle">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button></td>
+                    </tr>
+                    <tr class="rule-row-bottom">
+                        <td class="tag-status-text">En attente d'activation</td>
+                        <td class="rule-zone">
+                            <button class="btn btn-zone">Zone1</button>
+                            <button class="btn btn-zone">Zone5</button>
+                            <button class="btn btn-zone">Zone6</button>
+                            <button class="btn btn-zone">Zone7</button>
+                            <button class="btn btn-zone">Zone8</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <div class="section-publier">
+            <button type="button" class="btn btn-success btn-publier">Publier</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        public: false
+        autowire: false
+        autoconfigure: false
+
+    #Twig\Extensions\ArrayExtension: ~
+    #Twig\Extensions\DateExtension: ~
+    Twig\Extensions\IntlExtension: ~   # needed for the 'localizeddate' filter
+    #Twig\Extensions\TextExtension: ~
+
+    app.extension:
+        class: 'App/Twig/AppExtension'
+        arguments: ['@app.markdown','%app_locales%']

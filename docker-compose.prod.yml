@@ -1,0 +1,7 @@
+version: '2'
+services:
+  web:
+    environment:
+      APP_ENV: prod
+    extra_hosts:
+      - "katestorage.cdninfra-vsct.fr:10.101.63.234"

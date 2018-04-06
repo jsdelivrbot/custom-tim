@@ -1,0 +1,26 @@
+version: '2'
+services:
+  web:
+    image: ${APP_IMAGE_NAME}:${APP_TAG}
+    environment:
+      HTTP_PROXY: ${VSCT_PROXY}
+      HTTPS_PROXY: ${VSCT_PROXY}
+      APP_DEBUG: false
+    labels:
+      - service.80.name=${APP_PROJECT_NAME}-web
+      - service.80.version=${APP_TAG}
+  db:
+    labels:
+      - service.name=${APP_PROJECT_NAME}-db
+      - backup.${APP_PROJECT_NAME}backupdb.backup=mysqldump -ubdd_r -pbdd_r_2018 bdd_tim
+      - backup.${APP_PROJECT_NAME}backupdb.restore=mysql -ubdd_r -pbdd_r_2018 bdd_tim
+      - backup.${APP_PROJECT_NAME}backupdb.time=0 06 * * *
+      - backup.${APP_PROJECT_NAME}backupdb.retention=10
+networks:
+  db-network:
+    driver: overlay
+volumes:
+  db-data:
+    driver: flocker
+    driver_opts:
+      size: "1GiB"

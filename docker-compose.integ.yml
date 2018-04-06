@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    environment:
+      APP_ENV: recette
+    networks:
+      - webana_cdn-network
+networks:
+  webana_cdn-network:
+    external: true

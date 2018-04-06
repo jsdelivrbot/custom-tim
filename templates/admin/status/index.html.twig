@@ -1,0 +1,12 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_status_index' %}
+
+{% block main %}
+    <h1>{{ 'title.status_index'|trans }}</h1>
+
+    <p>
+        status {{ dump(status) }}
+    </p>
+{% endblock %}
+

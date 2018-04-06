@@ -1,0 +1,40 @@
+version: '2'
+services:
+  web:
+    environment:
+      TZ: Europe/Paris
+      DATABASE_URL: "mysql://bdd_r:bdd_r_2018@db:3306/bdd_tim"
+      APP_SECRET: 654f46g5f1h65yh4rg54zr5g46r54h65hhe64g9ae5t4gegrt4hr9udfze4g54rg656grt5
+    ports:
+      - 80
+    networks:
+      db-network:
+
+  db:
+    image: mysql:5.7.16
+    ports:
+      - 3306
+    environment:
+      TZ: Europe/Paris
+      MYSQL_ROOT_PASSWORD: bdd2018
+      MYSQL_DATABASE: bdd_tim
+      MYSQL_USER: bdd_r
+      MYSQL_PASSWORD: bdd_r_2018
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - db-network
+
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+          - 8080:8080
+      networks:
+          - db-network
+
+networks:
+  db-network:
+
+volumes:
+  db-data:

@@ -1,0 +1,41 @@
+parameters:
+    locale: 'en'
+    app_locales: en|fr
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+
+    app.rule.form:
+        class: Symfony\Component\Form\Form
+        public: true
+        autowire: false
+        factory: ['@form.factory', createNamed]
+        arguments:
+            - 'app_rule'
+            - 'App\Form\Type\RuleType'
+            - ~
+            - {validation_groups:['rule']}
+
+    app.rule.manager:
+        class: App\ModelManager\RuleManager
+        autowire: false
+        arguments: ['@doctrine']
+        public: true
+
+    app.rule.form_handler:
+        class: App\Form\Handler\RuleFormHandler
+        autowire: false
+        arguments: ['@app.rule.form', '@app.rule.manager']
+        public: true

@@ -1,0 +1,39 @@
+version: '2'
+services:
+  web:
+    build: .
+    image: tim
+    volumes:
+      - .:/usr/local/apache2/htdocs
+    environment:
+      - APP_ENV=dev
+      - APP_DEBUG=true
+      - VIRTUAL_HOST=dev.tim.wat.vsct.fr
+    networks:
+      - cdn-network
+  cdn:
+    image: docker-vsct.pkg.cloud.socrate.vsct.fr/webana/httpd-sftp:2.2.32-1.2
+    ports:
+      - 80
+    environment:
+      VIRTUAL_HOST: "dev.dd.cdn.wat.vsct.fr"
+      USER: "webananetstorage"
+      PASSWORD: "Uc2Qy3ml"
+      USER_HOME: "/opt/cdn"
+      FULL_PATH: "/opt/cdn/analytics"
+    volumes:
+      - cdn-data:/opt/cdn/analytics
+    networks:
+      cdn-network:
+        aliases:
+          - katestorage.cdninfra-vsct.fr
+networks:
+  db-network:
+    driver: bridge
+  cdn-network:
+    driver: bridge
+volumes:
+  db-data:
+    driver: local
+  cdn-data:
+    driver: local
